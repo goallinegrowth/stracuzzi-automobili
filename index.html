@@ -106,8 +106,8 @@
       );
     }
     @media (max-width: 768px) {
-      .hero { height: 70vh; min-height: 500px; padding-bottom: 4rem; }
-      .hero-bg { background-position: center bottom; }
+      .hero { height: 70vh; min-height: 500px; padding-bottom: 1.5rem; }
+      .hero-bg { background-position: center bottom; background-size: auto 143%; }
       .hero-overlay {
         background: linear-gradient(
           180deg,
@@ -117,6 +117,18 @@
           rgba(6,6,6,1.0) 100%
         );
       }
+      .hero-ctas { display: none; }
+    }
+    .hero-ctas-bar {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .hero-ctas-bar {
+        display: flex; flex-direction: column; gap: 1rem;
+        padding: 2rem 1.5rem 2.5rem; background: var(--bg);
+      }
+      .hero-ctas-bar .btn-primary,
+      .hero-ctas-bar .btn-ghost { width: 100%; justify-content: center; }
     }
     /* Grain texture */
     .hero-grain {
@@ -522,6 +534,15 @@
     <div class="hero-scroll-line"></div>
   </div>
 </section>
+
+<!-- Mobile-only CTA bar below hero -->
+<div class="hero-ctas-bar">
+  <a href="#gallery" class="btn-primary">
+    View Collection
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+  <a href="#contact" class="btn-ghost">Book Consultation</a>
+</div>
 
 <!-- ===== ABOUT ===== -->
 <section class="section about" id="about">
