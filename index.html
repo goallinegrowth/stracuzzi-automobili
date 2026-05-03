@@ -105,6 +105,18 @@
         rgba(6,6,6,0.97) 100%
       );
     }
+    @media (max-width: 768px) {
+      .hero-bg { background-position: center 80%; }
+      .hero-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(6,6,6,0.72) 0%,
+          rgba(6,6,6,0.35) 35%,
+          rgba(6,6,6,0.6) 65%,
+          rgba(6,6,6,0.98) 100%
+        );
+      }
+    }
     /* Grain texture */
     .hero-grain {
       position: absolute; inset: 0; z-index: 2; opacity: 0.04; pointer-events: none;
