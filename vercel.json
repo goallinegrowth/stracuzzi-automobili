@@ -1,0 +1,11 @@
+{
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "installCommand": null,
+  "framework": null,
+  "functions": {
+    "api/chat.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
