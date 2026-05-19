@@ -831,8 +831,8 @@
             <label for="msg">Message</label>
             <textarea id="msg" name="message" placeholder="Tell us about your vehicle or enquiry..."></textarea>
           </div>
-          <button type="submit" class="btn-submit" id="submitBtn">Send Enquiry</button>
-          <p class="form-success" id="formOk">Thank you — we'll be in touch shortly.</p>
+          <button type="submit" class="btn-submit" id="submitBtn">Send via WhatsApp</button>
+          <p class="form-success" id="formOk">Opening WhatsApp — we'll be in touch shortly.</p>
         </form>
       </div>
     </div>
@@ -927,15 +927,35 @@
   // ── Contact form
   function handleForm(e) {
     e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.textContent = 'Sending…'; btn.disabled = true;
-    setTimeout(() => {
-      document.getElementById('cForm').reset();
-      btn.textContent = 'Send Enquiry'; btn.disabled = false;
-      const ok = document.getElementById('formOk');
-      ok.style.display = 'block';
-      setTimeout(() => ok.style.display = 'none', 5500);
-    }, 1400);
+    const name    = document.getElementById('fn').value.trim();
+    const phone   = document.getElementById('ph').value.trim();
+    const email   = document.getElementById('em').value.trim();
+    const service = document.getElementById('svc').value;
+    const vehicle = document.getElementById('veh').value.trim();
+    const message = document.getElementById('msg').value.trim();
+
+    const serviceLabel = {
+      restoration: 'Restoration',
+      consignment: 'Consignment',
+      inquiry: 'Vehicle Enquiry',
+      general: 'General Enquiry'
+    }[service] || 'Not specified';
+
+    let text = `Hello Giovanni, I'm reaching out via the Stracuzzi Automobili website.\n\n`;
+    text += `*Name:* ${name}\n`;
+    if (phone)   text += `*Phone:* ${phone}\n`;
+    text += `*Email:* ${email}\n`;
+    text += `*Interested in:* ${serviceLabel}\n`;
+    if (vehicle) text += `*Vehicle:* ${vehicle}\n`;
+    if (message) text += `\n*Message:*\n${message}`;
+
+    const url = `https://wa.me/17865371574?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+
+    document.getElementById('cForm').reset();
+    const ok = document.getElementById('formOk');
+    ok.style.display = 'block';
+    setTimeout(() => ok.style.display = 'none', 5500);
   }
 
   // ── Chatbot
